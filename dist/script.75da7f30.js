@@ -37939,11 +37939,18 @@ module.exports = reloadCSS;
 var reloadCSS = require('_css_loader');
 module.hot.dispose(reloadCSS);
 module.hot.accept(reloadCSS);
-},{"C:\\Users\\user\\Desktop\\MCDEMZY\\Front End\\Github Projects\\three-js-background\\img\\bg1.avif":[["bg1.5b5cfb48.avif","img/bg1.avif"],"img/bg1.avif"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"script.js":[function(require,module,exports) {
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"img/bg1.avif":[function(require,module,exports) {
+module.exports = "/bg1.5b5cfb48.avif";
+},{}],"img/bg2.avif":[function(require,module,exports) {
+module.exports = "/bg2.b1b6bd9e.avif";
+},{}],"script.js":[function(require,module,exports) {
 "use strict";
 
 var THREE = _interopRequireWildcard(require("three"));
 require("./style.css");
+var _bg = _interopRequireDefault(require("./img/bg1.avif"));
+var _bg2 = _interopRequireDefault(require("./img/bg2.avif"));
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function (e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != typeof e && "function" != typeof e) return { default: e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n.default = e, t && t.set(e, n), n; }
 var container = document.querySelector(".three_bg");
@@ -37953,7 +37960,27 @@ var camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHei
 var renderer = new THREE.WebGL1Renderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 container.appendChild(renderer.domElement);
-},{"three":"node_modules/three/build/three.module.js","./style.css":"style.css"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var geometry = new THREE.PlaneGeometry(14, 8, 15, 9);
+var material = new THREE.MeshBasicMaterial({
+  //   color: 0xff0000,
+  map: loader.load(_bg.default)
+});
+var mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+camera.position.z = 5;
+var count = geometry.attributes.position.count;
+var clock = new THREE.Clock();
+function animate() {
+  var time = clock.getElapsedTime;
+  for (var i = 0; i < count; i++) {
+    var x = geometry.attributes.position.getX;
+    var y = geometry.attributes.position.getY;
+  }
+  requestAnimationFrame(animate);
+  renderer.render(scene, camera);
+}
+animate();
+},{"three":"node_modules/three/build/three.module.js","./style.css":"style.css","./img/bg1.avif":"img/bg1.avif","./img/bg2.avif":"img/bg2.avif"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
